@@ -18,7 +18,7 @@
 
 <body>
     <header>
-        <h1>Weather App</h1>
+        <h1>Weather App Dashboard</h1>
     </header>
 
     <main class="container my-2">
@@ -27,90 +27,90 @@
                 <div class="card my-2">
                     <h5 class="card-header">Search for a City:</h5>
                     <div class="card-body">
-                        <input type="text" class="form-control" placeholder="City Name" aria-label="City Name" aria-describedby="basic-addon2">
-                    <a href="#" class="btn btn-primary">Search</a>
+                        <input type="text" class="form-control" placeholder="City Name" aria-label="City Name" aria-describedby="basic-addon2" id="user-input">
+                    <button class="btn btn-primary" id="search-btn">Search</button>
                     </div>
                 </div>
                 <div class="card my-2">
                     <div class="card-header">
-                    Previous Searches
+                    Previous Searches:
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
+                    <ul class="list-group list-group-flush" id="storage">
+                        <!-- This is where search history buttons will show up -->
                     </ul>
                 </div>
             </div>
             <div class="col-md-9 col-12">
+                <h5>Results for <span id="city-name"></span></h5>
                 <div class="card my-2">
-                    <div class="card-header">
-                    City Name
-                    </div>
+                    <div class="card-header" id="current-date"></div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
+                        <img id="current-icon"/>
+                        <li class="list-group-item" id="current-main"></li>
+                        <li class="list-group-item" id="current-temp"></li>
+                        <li class="list-group-item" id="current-ws"></li>
+                        <li class="list-group-item" id="current-hum"></li>
                     </ul>
                 </div>
+                <h5>5-day Forecast:</h5>
                 <div class="row">
                     <div class="col-md col-12">
                         <div class="card my-2">
-                            <div class="card-header">
-                            City Name
-                            </div>
+                            <div class="card-header" id="date-1"></div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
+                                <img id="icon-1"/>
+                                <li class="list-group-item" id="main-1"><i id="icon-1"></i></li>
+                                <li class="list-group-item" id="temp-1"></li>
+                                <li class="list-group-item" id="ws-1"></li>
+                                <li class="list-group-item" id="hum-1"></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md col-12">
                         <div class="card my-2">
-                            <div class="card-header">
-                            City Name
-                            </div>
+                            <div class="card-header" id="date-2"></div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
+                                <img id="icon-2"/>
+                                <li class="list-group-item" id="main-2"><i id="icon-2"></i></li>
+                                <li class="list-group-item" id="temp-2"></li>
+                                <li class="list-group-item" id="ws-2"></li>
+                                <li class="list-group-item" id="hum-2"></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md col-12">
                         <div class="card my-2">
-                            <div class="card-header">
-                            City Name
-                            </div>
+                            <div class="card-header" id="date-3"></div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
+                                <img id="icon-3"/>
+                                <li class="list-group-item" id="main-3"><i id="icon-3"></i></li>
+                                <li class="list-group-item" id="temp-3"></li>
+                                <li class="list-group-item" id="ws-3"></li>
+                                <li class="list-group-item" id="hum-3"></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md col-12">
                         <div class="card my-2">
-                            <div class="card-header">
-                            City Name
-                            </div>
+                            <div class="card-header" id="date-4"></div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
+                                <img id="icon-4"/>
+                                <li class="list-group-item" id="main-4"><i id="icon-4"></i></li>
+                                <li class="list-group-item" id="temp-4"></li>
+                                <li class="list-group-item" id="ws-4"></li>
+                                <li class="list-group-item" id="hum-4"></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md col-12">
                         <div class="card my-2">
-                            <div class="card-header">
-                            City Name
-                            </div>
+                            <div class="card-header" id="date-5"></div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
+                                <img id="icon-5"/>
+                                <li class="list-group-item" id="main-5"><i id="icon-5"></i></li>
+                                <li class="list-group-item" id="temp-5"></li>
+                                <li class="list-group-item" id="ws-5"></li>
+                                <li class="list-group-item" id="hum-5"></li>
                             </ul>
                         </div>
                     </div>
