@@ -10,11 +10,6 @@ var icon5El = $('#icon-5');
 
 var searchHistory = [];
 
-function search() {
-  getGeocoding();
-  getHistory();
-}
-
 function historySearch(cityName) {
   // fetch request gets a list of all the repos for the node.js organization
   var geocoding = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&appid=' + apiKey;
@@ -30,6 +25,8 @@ function historySearch(cityName) {
       getCurrentWeather(lat, lon)
       getForecast(lat, lon);
     });
+
+  $('#city-name').text('Results for ' + cityName);
 }
 
 function getHistory() {
@@ -47,7 +44,7 @@ function getHistory() {
   }
 }
 
-// getHistory();
+getHistory();
 
 function btnClick(e) {
     if (!e.target.matches('.history-btn')) {
@@ -68,6 +65,9 @@ function getGeocoding() {
     console.log(searchHistory);
     localStorage.setItem('history', JSON.stringify(searchHistory));
 
+    $('#storage').empty();
+    getHistory();
+
     fetch(geocoding)
       .then(function (response) {
         return response.json();
@@ -79,6 +79,8 @@ function getGeocoding() {
         getCurrentWeather(lat, lon)
         getForecast(lat, lon);
       });
+
+    $('#city-name').text('Results for ' + userInput.val());
 }
 
 function getCurrentWeather(lat, lon) {
@@ -191,5 +193,5 @@ function getForecast(lat, lon) {
       });
 }
 
-searchBtn.click(search);
+searchBtn.click(getGeocoding);
 $('#storage').click(btnClick);
