@@ -1,3 +1,4 @@
+// global variables
 var apiKey = '76d5f9c2445ef51bea05282eb7396b3b';
 var userInput = $('#user-input');
 var searchBtn = $('#search-btn');
@@ -8,13 +9,13 @@ var icon3El = $('#icon-3');
 var icon4El = $('#icon-4');
 var icon5El = $('#icon-5');
 
+// search history, empty array
 var searchHistory = [];
 
+// search performed when a seach history button is clicked
 function historySearch(cityName) {
-  // fetch request gets a list of all the repos for the node.js organization
+  // fetch request pulls data on latitude and longitude
   var geocoding = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&appid=' + apiKey;
-
-
 
   fetch(geocoding)
     .then(function (response) {
@@ -31,6 +32,7 @@ function historySearch(cityName) {
   $('#city-name').text('Results for ' + cityName);
 }
 
+// retrieves city name from local storage and prints it to the page as a button
 function getHistory() {
   var storedHistory = localStorage.getItem('history');
 
@@ -46,8 +48,10 @@ function getHistory() {
   }
 }
 
+// shows search history buttons upon page load
 getHistory();
 
+// assigns the city name on the button to the search when search history button is clicked
 function btnClick(e) {
     if (!e.target.matches('.history-btn')) {
       return;
@@ -59,14 +63,16 @@ function btnClick(e) {
     historySearch(btn);
 }
 
+// search performed when a new city name is search in the input
 function getGeocoding() {
-    // fetch request gets a list of all the repos for the node.js organization
+    // fetch request pulls data on latitude and longitude
     var geocoding = 'http://api.openweathermap.org/geo/1.0/direct?q=' + userInput.val() + '&appid=' + apiKey;
 
     searchHistory.push(userInput.val());
     console.log(searchHistory);
     localStorage.setItem('history', JSON.stringify(searchHistory));
 
+    // empties search history container to ensure no duplicates in list
     $('#storage').empty();
     getHistory();
 
@@ -85,13 +91,16 @@ function getGeocoding() {
     $('#city-name').text('Results for ' + userInput.val());
 }
 
+// function retrieves current weather data and prints it to the page
 function getCurrentWeather(lat, lon) {
   var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat +'&lon=' + lon + '&units=imperial&appid=' + apiKey;
 
+  // removes hide class when weather information is displayed
   if ($('#weather').class = $('.hide')) {
     $('#weather').removeClass('hide');
   }
 
+  // fetch request pulls current weather data using lat and lon 
   fetch(weatherUrl)
       .then(function (response) {
         return response.json();
@@ -116,9 +125,11 @@ function getCurrentWeather(lat, lon) {
       });
 }
 
+// function retrieves forecast weather data and prints it to the page
 function getForecast(lat, lon) {
     var requestUrl = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat +'&lon=' + lon + '&units=imperial&appid=' + apiKey;
 
+    // fetch request pulls forecast weather data using lat and lon
     fetch(requestUrl)
       .then(function (response) {
         return response.json();
@@ -198,5 +209,8 @@ function getForecast(lat, lon) {
       });
 }
 
+// click listener for search input
 searchBtn.click(getGeocoding);
+
+// click listener for search history buttons
 $('#storage').click(btnClick);

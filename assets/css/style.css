@@ -1,3 +1,4 @@
+/* header styling */
 h1 {
     text-align: center;
     background-color: rgb(202, 254, 237);
@@ -5,15 +6,19 @@ h1 {
     margin-bottom: 2%;
 }
 
+/* weather icon styling */
 img {
     height: 35px;
     width: 35px;
+    margin-right: 5px;
 }
 
+/* hides the cards when they don't have information displayed */
 .hide {
     display: none;
 }
 
+/* button styling */
 button {
     width: 100%;
 }
