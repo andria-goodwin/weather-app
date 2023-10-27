@@ -14,6 +14,8 @@ function historySearch(cityName) {
   // fetch request gets a list of all the repos for the node.js organization
   var geocoding = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&appid=' + apiKey;
 
+
+
   fetch(geocoding)
     .then(function (response) {
       return response.json();
@@ -86,6 +88,9 @@ function getGeocoding() {
 function getCurrentWeather(lat, lon) {
   var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat +'&lon=' + lon + '&units=imperial&appid=' + apiKey;
 
+  if ($('#weather').class = $('.hide')) {
+    $('#weather').removeClass('hide');
+  }
 
   fetch(weatherUrl)
       .then(function (response) {

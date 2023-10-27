@@ -9,3 +9,11 @@ img {
     height: 35px;
     width: 35px;
 }
+
+.hide {
+    display: none;
+}
+
+button {
+    width: 100%;
+}
