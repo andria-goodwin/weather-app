@@ -15,7 +15,7 @@ var searchHistory = [];
 // search performed when a seach history button is clicked
 function historySearch(cityName) {
   // fetch request pulls data on latitude and longitude
-  var geocoding = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&appid=' + apiKey;
+  var geocoding = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&appid=' + apiKey;
 
   fetch(geocoding)
     .then(function (response) {
@@ -66,7 +66,7 @@ function btnClick(e) {
 // search performed when a new city name is search in the input
 function getGeocoding() {
     // fetch request pulls data on latitude and longitude
-    var geocoding = 'http://api.openweathermap.org/geo/1.0/direct?q=' + userInput.val() + '&appid=' + apiKey;
+    var geocoding = 'https://api.openweathermap.org/geo/1.0/direct?q=' + userInput.val() + '&appid=' + apiKey;
 
     searchHistory.push(userInput.val());
     console.log(searchHistory);
@@ -93,7 +93,7 @@ function getGeocoding() {
 
 // function retrieves current weather data and prints it to the page
 function getCurrentWeather(lat, lon) {
-  var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat +'&lon=' + lon + '&units=imperial&appid=' + apiKey;
+  var weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat +'&lon=' + lon + '&units=imperial&appid=' + apiKey;
 
   // removes hide class when weather information is displayed
   if ($('#weather').class = $('.hide')) {
@@ -127,7 +127,7 @@ function getCurrentWeather(lat, lon) {
 
 // function retrieves forecast weather data and prints it to the page
 function getForecast(lat, lon) {
-    var requestUrl = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat +'&lon=' + lon + '&units=imperial&appid=' + apiKey;
+    var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat +'&lon=' + lon + '&units=imperial&appid=' + apiKey;
 
     // fetch request pulls forecast weather data using lat and lon
     fetch(requestUrl)
